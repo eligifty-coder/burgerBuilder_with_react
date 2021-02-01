@@ -1,0 +1,23 @@
+.NavigationItems{
+   margin: 0;
+   padding: 0;
+   list-style: none;
+   display: grid;
+   align-items: center;
+   height: 100%;
+   width: 100%;
+   margin-top: 32px;
+   row-gap: 22px;
+}
+@media (min-width:500px){
+   .NavigationItems{
+   margin: 0;
+   padding: 0;
+   list-style: none;
+   display: grid;
+   height: 100%;
+   grid-template-columns: repeat(3,1fr);
+   /* justify-items:flex-end !important; */
+   align-items: flex-end;
+}
+}
