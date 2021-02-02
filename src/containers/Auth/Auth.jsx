@@ -42,6 +42,11 @@ class Auth extends Component {
       },
       isSignup: true
    }
+   componentDidMount() {
+      if(!this.props.buildingBurger && this.props.authRedirectPath!=='/'){
+        this.props.onSetAuthRedirectPath()
+   }
+}
 
    checkValidity(value, rules) {
       let isValid = true;
@@ -73,6 +78,7 @@ class Auth extends Component {
 
       return isValid;
    }
+   
 
    inputChangedHandler = (event, controlName) => {
       const updatedControls = {
@@ -130,7 +136,7 @@ class Auth extends Component {
             <p>{this.props.error.message}</p>
          );
       }
-      const authRedirect= this.props.isAuthenticated? <Redirect to="/"/>:null
+      const authRedirect= this.props.isAuthenticated? <Redirect to={authRedirect}/>:null
       return (
          <div className={classes.Auth}>
             {authRedirect}
@@ -152,7 +158,7 @@ const mapStateToProps = state => {
       loading: state.auth.loading,
       error: state.auth.error,
       isAuthenticated:state.auth.token,
-      buildingBurger:state.buildingBurger.buiding,
+      buildingBurger: state.burgerBuilder.building,
       authRedirectPath:state.auth.authRedirectPath
    };
 };
